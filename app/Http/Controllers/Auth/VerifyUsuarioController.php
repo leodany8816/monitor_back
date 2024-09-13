@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\UsuarioVerificationRequest;
+use Illuminate\Foundation\Auth\usuarioVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 
 class VerifyusuarioController extends Controller

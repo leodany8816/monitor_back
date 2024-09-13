@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable;
     use HasFactory;
     // public $timestamps = false;
     protected $table = 'usuarios';
@@ -20,9 +24,15 @@ class Usuario extends Model
         'token'
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     public function empresa(){
         return $this->hasMany(Empresa::class, 'id_empresa');
     }
+    
 
 
 }
