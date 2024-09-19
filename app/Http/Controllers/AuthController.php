@@ -23,9 +23,13 @@ class AuthController extends Controller
     
         // Verificar si el usuario existe y la contraseña es correcta
         if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'usuario' => ['The provided credentials are incorrect.'],
-            ]);
+            // throw ValidationException::withMessages([
+            //     'usuario' => ['The provided credentials are incorrect.'],
+            // ]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Credenciales incorrectas'
+            ], 401);
         }
     
         // Crear un token personal para el usuario
@@ -33,7 +37,8 @@ class AuthController extends Controller
     
         // Retornar el token en la respuesta
         return response()->json([
-            'access_token' => $token,
+            'success' => 'true',
+            'token' => $token,
             'token_type' => 'Bearer',
             'id_empresa' => $user['id_empresa']
         ]);
@@ -45,6 +50,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Logged out successfully',
         ], 200);
     }

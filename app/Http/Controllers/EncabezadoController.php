@@ -15,15 +15,36 @@ class EncabezadoController extends Controller
         try {
             $user = $request->user();
             $idEmpresa = $user->id_empresa;
+            $empresa = [];
+            $empresas = Empresa::get()->where('id_empresa', '=', $idEmpresa);
+            foreach($empresas as $empresa){
+                return [
+                    "exito" => true,
+                    "id_empresa" => $empresa->id_empresa,
+                    "nombre" => $empresa->nombre,
+                    "rfc" => $empresa->rfc,
+                    "logo" => $empresa->logo
+                ];
+            }
+            // $empresa  = $empresas->map(function ($empresa) {
+            //     return [
+            //         "id_empresa" => $empresa->id_empresa,
+            //         "nombre" => $empresa->nombre,
+            //         "rfc" => $empresa->rfc,
+            //         "logo" => $empresa->logo
+            //     ];
+            // });
+            // $jsonEmpresas = [
+            //     'exito' => 'true',
+            //     'empresa' =>[ $empresa ]
+            // ];
 
-            $empresa = Empresa::get()->where('id_empresa', '=', $idEmpresa);
-            $jsonEmpresas = [
-                'exito' => 'true',
+            $empresas = [
                 'empresa' => $empresa
             ];
 
             return response()->json(
-                $jsonEmpresas
+                $empresas
             );
             
             // return response()->json(
@@ -41,3 +62,5 @@ class EncabezadoController extends Controller
         }
     }
 }
+
+//https://github.com/Logicainformatica18/certificaciones
