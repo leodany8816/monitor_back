@@ -14,6 +14,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::post('/cfdi', [CfdiController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/downloadzip',[CfdiController::class, 'downloadzip'])->middleware('auth:sanctum');
 
 Route::post('/encabezado', [EncabezadoController::class, 'index'])->middleware('auth:sanctum');
 
