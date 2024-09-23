@@ -93,7 +93,7 @@ class CfdiController extends Controller
 
         // Verificar si la carpeta existe
         if (!File::exists($folderPath)) {
-            return response()->json(['message' => 'Folder not found'], 404);
+            return response()->json(['message' => 'Folder no existe'], 404);
         }
 
         // Crear un archivo ZIP temporal
@@ -154,5 +154,43 @@ class CfdiController extends Controller
             'nombreZip' => $zipFileName,
             'file_base64' => $zipBase64
         ], 200);
+    }
+
+    public function downloadpdf(Request $request)
+    {
+        $idFactura = $request->idFactura;
+        //echo "idFactura-> " . $idFactura;
+
+        //Ruta donde se encuentran los archivos a buscar
+        $folderPath = storage_path('/app/public/cfdis/');
+
+        // Verificar si la carpeta existe
+        if (!File::exists($folderPath)) {
+            return response()->json(['message' => 'Folder no existe'], 404);
+        }
+
+        $cfdi = Factura::findOrFail($idFactura);
+        $filePdf = $cfdi->nombre_pdf;
+
+        $filePathPdf = $folderPath . $filePdf;
+        if (file_exists($filePathPdf)) {
+            //echo "el archivo existe";
+            //codificando el archivo pdf a base64
+            
+            $pdfContent = file_get_contents($filePathPdf);
+            $pdfBase64 = base64_encode($pdfContent);
+
+            return response()->json([
+                'exito' => true,
+                'nombrePdf' => $filePdf,
+                'file_base64' => $pdfBase64
+            ], 200);
+            
+        } else {
+            return response()->json([
+                'exito' => false,
+                'error' => "El archivo pdf no existe {$filePdf}."
+            ], 500);
+        }
     }
 }
