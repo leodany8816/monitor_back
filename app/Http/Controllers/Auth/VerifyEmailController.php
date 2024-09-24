@@ -4,19 +4,19 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\UsuarioVerificationRequest;
+use Illuminate\Foundation\Auth\EmailVerificationRequestst;
 use Illuminate\Http\RedirectResponse;
 
-class VerifyusuarioController extends Controller
+class VerifyEmailController extends Controller
 {
     /**
      * Mark the authenticated user's usuario address as verified.
      */
-    public function __invoke(usuarioVerificationRequest $request): RedirectResponse
+    public function __invoke(EmailVerificationRequestst $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedusuario()) {
             return redirect()->intended(
-                //config('app.frontend_url').'/monitor?verified=1'
+                config('app.frontend_url').'/dashboard?verified=1'
             );
         }
 
@@ -25,7 +25,7 @@ class VerifyusuarioController extends Controller
         }
 
         return redirect()->intended(
-            //config('app.frontend_url').'/monitor?verified=1'
+           config('app.frontend_url').'/dashboard?verified=1'
         );
     }
 }
