@@ -16,7 +16,7 @@ class VerifyusuarioController extends Controller
     {
         if ($request->user()->hasVerifiedusuario()) {
             return redirect()->intended(
-                config('app.frontend_url').'/monitor?verified=1'
+                //config('app.frontend_url').'/monitor?verified=1'
             );
         }
 
@@ -25,7 +25,7 @@ class VerifyusuarioController extends Controller
         }
 
         return redirect()->intended(
-            config('app.frontend_url').'/monitor?verified=1'
+            //config('app.frontend_url').'/monitor?verified=1'
         );
     }
 }
