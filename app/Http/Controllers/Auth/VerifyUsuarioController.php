@@ -7,7 +7,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\usuarioVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 
-class VerifyusuarioController extends Controller
+class VerifyUsuarioController extends Controller
 {
     /**
      * Mark the authenticated user's usuario address as verified.
@@ -16,7 +16,7 @@ class VerifyusuarioController extends Controller
     {
         if ($request->user()->hasVerifiedusuario()) {
             return redirect()->intended(
-                //config('app.frontend_url').'/monitor?verified=1'
+                config('app.frontend_url').'/dashboard?verified=1'
             );
         }
 
@@ -25,7 +25,7 @@ class VerifyusuarioController extends Controller
         }
 
         return redirect()->intended(
-            //config('app.frontend_url').'/monitor?verified=1'
+           config('app.frontend_url').'/dashboard?verified=1'
         );
     }
 }
