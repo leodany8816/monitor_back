@@ -18,6 +18,7 @@ Route::post('/downloadzip',[CfdiController::class, 'downloadzip'])->middleware('
 Route::post('/downloadpdf', [CfdiController::class, 'downloadpdf'])->middleware('auth:sanctum');
 
 Route::post('/encabezado', [EncabezadoController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/encabezado', [EncabezadoController::class, 'test'])->middleware('auth:sanctum');
 
 
 // habilitar el cors en ciertas rutas
