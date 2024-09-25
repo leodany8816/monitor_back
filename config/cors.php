@@ -15,14 +15,15 @@ return [
     |
     */
 
-    'paths' => ['*'],
-    //'paths' => ['api/*'],
+    //'paths' => ['*'],
+    'paths' => ['api/*'],
 
     'allowed_methods' => ['*'],
 
     // 'allowed_origins' => [env('FRONTEND_URL', '*')],
     //'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:4321')],
-    'allowed_origins' => [env('FRONTEND_URL', 'https://bekaert.grupo-citi.com')],
+    //'allowed_origins' => [env('FRONTEND_URL', 'https://bekaert.grupo-citi.com')],
+    'allowed_origins' => ['https://bekaert.grupo-citi.com'],
 
     'allowed_origins_patterns' => [],
 
