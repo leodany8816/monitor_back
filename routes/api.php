@@ -19,6 +19,10 @@ Route::post('/downloadpdf', [CfdiController::class, 'downloadpdf'])->middleware(
 
 Route::post('/encabezado', [EncabezadoController::class, 'index'])->middleware('auth:sanctum');
 
+Route::get('/csrf-token', function () {
+    return response()->json(['csrf_token' => csrf_token()]);
+});
+
 
 // habilitar el cors en ciertas rutas
 // Route::middleware(['cors'])->group(function () {
