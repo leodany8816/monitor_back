@@ -38,7 +38,7 @@ class CookieJar implements JarContract
      *
      * @var string
      */
-    protected $sameSite = 'lax';
+    protected $sameSite = 'none';
 
     /**
      * All of the cookies queued for sending.
