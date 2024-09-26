@@ -25,11 +25,13 @@ return [
     'allowed_origins' => [env('FRONTEND_URL', 'https://bekaert.grupo-citi.com')],
     //'allowed_origins' => ['https://bekaert.grupo-citi.com'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['*'],
 
-    'allowed_headers' => ['Authorization', 'Content-Type', 'X-Requested-With', 'X-CSRF-TOKEN', '*'],  // Asegúrate de incluir 'Authorization'.
+    'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    //'allowed_headers' => ['Authorization', 'Content-Type', 'X-Requested-With', 'X-CSRF-TOKEN', '*'],  // Asegúrate de incluir 'Authorization'.
+
+    'exposed_headers' => false,
 
     'max_age' => 0,
 
