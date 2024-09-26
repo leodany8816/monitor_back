@@ -157,7 +157,9 @@ return [
     */
 
     // 'domain' => env('SESSION_DOMAIN'),
-    'domain' => '.grupo-citi.com',
+    'domain' => '.grupo-citi.com',  // Comparte cookies entre subdominios
+    'secure' => true,               // Asegúrate de que las cookies solo se envíen por HTTPS
+    'same_site' => 'none',
 
     /*
     |--------------------------------------------------------------------------
@@ -213,7 +215,5 @@ return [
     */
 
     'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
-    'same_site' => 'none',
-    'secure' => true,  // Asegúrate de tener HTTPS en producción
 
 ];
