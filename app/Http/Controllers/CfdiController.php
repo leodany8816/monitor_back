@@ -88,8 +88,12 @@ class CfdiController extends Controller
         $dataFiles = explode(',', $request->cfdis);
         // echo "<br> tamanio " . count($dataFiles);
 
+		$user = $request->user();
+        $rfcEmpresa = $user->usuario;
+		echo "rfcEmpresa".$rfcEmpresa;
+
         //Ruta donde se encuentran los archivos a buscar
-        $folderPath = storage_path('/app/public/cfdis/');
+        $folderPath = storage_path('/app/public/cfdis/'.$rfcEmpresa.'/');
 
         // Verificar si la carpeta existe
         if (!File::exists($folderPath)) {
@@ -161,8 +165,12 @@ class CfdiController extends Controller
         $idFactura = $request->idFactura;
         //echo "idFactura-> " . $idFactura;
 
+		$user = $request->user();
+        $rfcEmpresa = $user->usuario;
+		echo "rfcEmpresa".$rfcEmpresa;
+
         //Ruta donde se encuentran los archivos a buscar
-        $folderPath = storage_path('/app/public/cfdis/');
+        $folderPath = storage_path('/app/public/cfdis/'.$rfcEmpresa.'/');
 
         // Verificar si la carpeta existe
         if (!File::exists($folderPath)) {
