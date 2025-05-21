@@ -16,20 +16,22 @@ return [
     */
 
     //'paths' => ['*'],
-    'paths' => ['api/*'],
+    'paths' => ['api/*', 'login', 'csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
-    // 'allowed_origins' => [env('FRONTEND_URL', '*')],
+    //'allowed_origins' => [env('FRONTEND_URL', '*')],
     //'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:4321')],
-    //'allowed_origins' => [env('FRONTEND_URL', 'https://bekaert.grupo-citi.com')],
-    'allowed_origins' => ['https://bekaert.grupo-citi.com'],
+    'allowed_origins' => [env('FRONTEND_URL', 'https://bekaert.grupo-citi.com')],
+    //'allowed_origins' => ['https://bekaert.grupo-citi.com'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['*'],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    //'allowed_headers' => ['Authorization', 'Content-Type', 'X-Requested-With', 'X-CSRF-TOKEN', '*'],  // Asegúrate de incluir 'Authorization'.
+
+    'exposed_headers' => false,
 
     'max_age' => 0,
 
