@@ -85,12 +85,11 @@ class CfdiController extends Controller
 	
     public function search(Request $request)
     {
-		echo "entra al metodo";
         $user = $request->user();
         $idEmpresa = $user->id_empresa;
         $fechaInicio = Carbon::parse(request('fechaInicio'))->startOfDay();
         $fechaFin = Carbon::parse(request('fechaFin'))->endOfDay();
-        $cfdis = Factura::orderBy('id_factura', 'desc')
+        $cfdis = Factura::orderBy('fecha_creacion', 'desc')
             ->where('id_empresa', '=', $idEmpresa)
             ->whereBetween('comprobante_fecha', [$fechaInicio, $fechaFin])
             ->get();
